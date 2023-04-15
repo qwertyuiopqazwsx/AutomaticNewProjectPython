@@ -32,21 +32,30 @@ class Check:
         print('\nВыберите что создать:', ''.join([f'\n{i+1}. {task}' for i, task in enumerate(tasks)]))
         user_select_files = self.get_user_select_files(len(tasks))
 
-        anim = threading.Thread(target=self.animations, args=())
+        #anim = threading.Thread(target=self.animations, args=())
 
         if user_select_files == 1:
             os.system('cls')
             name_new_catalog = str(input('\nВведите имя нового каталога: '))
             self.start_animations = True
             #anim.start()
-            os.mkdir(path=f'{self.directory}\\{name_new_catalog}')
-            time.sleep(1)
+            self.directory = f'{self.directory}\\{name_new_catalog}'
+            os.mkdir(path=f'{self.directory}')
             self.start_animations = False
 
         elif user_select_files == 2:
             self.start_animations = True
-            anim.start()
-            time.sleep(2)
+            #anim.start()
+            
+            os.chdir(f'{self.directory}')
+            with open('main.txt', 'w') as f:
+                f.write(f'#import\n\nclass Name:\n\tdef __init__(self) -> None:\n\t\t...')
+            os.rename("main.txt", "main.py")
+
+            with open('start.txt', 'w') as f:
+                f.write(f'python main.py\nPAUSE')
+            os.rename("start.txt", "start.bat")
+
             self.start_animations = False
             
         elif user_select_files == 3:
