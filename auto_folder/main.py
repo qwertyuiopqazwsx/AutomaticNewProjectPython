@@ -3,10 +3,9 @@ import time
 import threading
 from modules. class_errors import AutomaticError
 
-MY_DIRECTORY = f"C:\\Users\\ogurec\\Desktop\\Artyom\\IT"
+MY_DIRECTORY = f"Введи свою директорию сюда!"
 
 class Check:
-    """Класс, предназначенный для работы с пользователем. Используется для выбора пользователем нужного каталога."""
     def __init__(self) -> None:
         self.directory = MY_DIRECTORY
         self.check_directory = True
